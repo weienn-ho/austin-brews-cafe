@@ -1,0 +1,250 @@
+/*==============================================================
+  1. UNIVERSAL RESET & BASE STYLES
+  ============================================================*/
+    html {
+        scroll-behavior: smooth;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #2c2c2c;
+        background-color: #faf9f6;
+        line-height: 1.6;
+    }
+
+/*==============================================================
+   2. HEADER & NAVIGATION (Flexbox 1D Layout)
+   ===========================================================*/
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 8%;
+        background-color: #ffffff;
+        border-bottom: 1px solid #eaeaea;
+    }
+
+    header h2 {
+        font-size: 1.5rem;
+        color: #1b3b22; /* Deep coffee brown */
+    }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+        gap: 24px;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #555555;
+        font-weight: 600;
+        transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+        color: #c86d51; /* Warm rust orange hover */
+    }
+
+    /*============================================================
+    3. HERO SECTION (Centered Flexbox)
+    ==========================================================*/
+    main section:first-of-type {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 80px 20px;
+        background-color: #f4efe6;
+    }
+
+    main section:first-of-type h1 {
+        font-size: 2.5rem;
+        color: #1b3b22;
+        margin-bottom: 16px;
+        max-width: 600px;
+    }
+
+    main section:first-of-type p {
+        font-size: 1.1rem;
+        color: #666666;
+        margin-bottom: 24px;
+        max-width: 500px;
+    }
+
+    main section:first-of-type button {
+        background-color: #1b3b22;
+        color: #ffffff;
+        border: none;
+        padding: 14px 32px;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    main section:first-of-type button:hover {
+        background-color: #c86d51;
+    }
+
+/* ===========================================================
+    4. MENU SECTION (CSS Grid 2D Layout)
+    =========================================================*/
+    main section:nth-of-type(2) {
+        padding: 60px 8%;
+        text-align: center;
+    }
+
+    main section:nth-of-type(2) h2 {
+        font-size: 2rem;
+        color: #1b3b22;
+        margin-bottom: 32px;
+    }
+
+    /* The Grid Container */
+    main section:nth-of-type(2) > div {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
+    }
+
+    /* Individual Item Cards */
+    main section:nth-of-type(2) div > div {
+        background-color: #ffffff;
+        padding: 24px;
+        border-radius: 8px;
+        border: 1px solid #eaeaea;
+        text-align: left;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    }
+
+    main section:nth-of-type(2) h3 {
+        color: #1b3b22;
+        margin-bottom: 8px;
+    }
+
+    .about {
+        background-color: #f4f4f4;
+        text-align: center;
+        padding: 60px 20px;
+    }
+
+/*===========================================================
+    5. CONTACT SECTION
+    =======================================================*/
+    #contact {
+        padding: 60px 20px;
+        background-color: #ffffff;
+        text-align: center;
+    }
+
+    #contact h2 {
+        font-size: 2rem;
+        color: #1b3b22;
+        margin-bottom: 8px;
+    }
+
+    #contact p {
+        color: #666666;
+        margin-bottom: 32px;
+    }
+
+    /* Center form and restrict max-width for readable layout */
+    #contact form {
+        max-width: 500px;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #2c2c2c;
+    }
+
+    .form-group input, 
+    .form-group textarea {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1px solid #cccccc;
+        border-radius: 6px;
+        font-size: 1rem;
+        font-family: inherit;
+    }
+
+    /* Highlight input field when clicked */
+    .form-group input:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #1b3b22;
+        box-shadow: 0 0 0 3px rgba(27, 59, 34, 0.15);
+    }
+
+    #contact button[type="submit"] {
+        width: 100%;
+        background-color: #1b3b22;
+        color: #ffffff;
+        border: none;
+        padding: 14px;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    #contact button[type="submit"]:hover {
+        background-color: #c86d51;
+    }
+
+/* ===========================================================
+    6. FOOTER
+    ========================================================*/
+    footer {
+        background-color: #2c2c2c;
+        color: #cccccc;
+        text-align: center;
+        padding: 30px 20px;
+        font-size: 0.9rem;
+    }
+
+    footer p {
+        margin-bottom: 6px;
+    }
+
+/*===========================================================
+    7. MOBILE RESPONSIVE STYLES (Screens 768px and under) (Always kept at bottom)
+    =======================================================*/
+    @media (max-width: 768px) {
+
+        /* Stack header logo and navigation vertically */
+        header {
+            flex-direction: column;
+            gap: 16px;
+            padding: 20px 4%;
+        }
+
+        /* Shrink the large hero title so it fits on mobile screens */
+        main section:first-of-type h1 {
+            font-size: 1.8rem;
+        }
+
+        /* Adjust padding for small screens */
+        main section:first-of-type {
+            padding: 50px 16px;
+        }
+    }
