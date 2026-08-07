@@ -1,53 +1,62 @@
-// Grab DOM elements
+// ===========================================================
+// AUSTIN BREWS - DIAGNOSTIC script.js
+// ===========================================================
+
+// TEST 1: Check if the browser is reading this JavaScript file
+alert("DIAGNOSTIC STEP 1: script.js is loaded and running!");
+
+// 1. DOM Element Selection
 const hamburgerBtn = document.getElementById('hamburger-btn');
 const navLinks = document.getElementById('nav-links');
-
-// Toggle menu visibility on hamburger click
-hamburgerBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
-
-// Auto-close mobile menu when user selects an anchor link
-document.querySelectorAll('#nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-    });
-});
-
-// Form Handing & Modal Logic
-
-// Grab DOM Elements
 const reservationForm = document.getElementById('reservation-form');
 const modalOverlay = document.getElementById('modal-overlay');
 const closeModalBtn = document.getElementById('close-modal-btn');
 const modalUserName = document.getElementById('modal-user-name');
 
-// Intercept Form Submission
+// TEST 2: Check if the elements exist in your HTML
+if (!hamburgerBtn) {
+    alert("DIAGNOSTIC ERROR: Cannot find element with id='hamburger-btn' in your HTML!");
+}
+if (!navLinks) {
+    alert("DIAGNOSTIC ERROR: Cannot find element with id='nav-links' in your HTML!");
+}
+
+// 2. Mobile Navigation Toggle
+if (hamburgerBtn && navLinks) {
+    alert("DIAGNOSTIC STEP 2: Elements found successfully!");
+
+    hamburgerBtn.addEventListener('click', () => {
+        // TEST 3: Check if the click event is being captured
+        alert("DIAGNOSTIC STEP 3: Hamburger button was clicked!");
+        navLinks.classList.toggle('active');
+    });
+
+    // Auto-close mobile menu when an anchor link is selected
+    document.querySelectorAll('#nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    });
+}
+
+// 3. Form Handling & Modal Trigger
 if (reservationForm) {
     reservationForm.addEventListener('submit', (e) => {
-        // Prevent default page reload
         e.preventDefault();
-
-        // Extract user's name from input field
         const nameInput = document.getElementById('name').value;
-
-        // Insert name into modal text dynamically
         modalUserName.textContent = nameInput;
-
-        // Display modal
         modalOverlay.classList.add('active');
-
-        // Clear input fields 
         reservationForm.reset();
     });
 }
 
-// Close Modal on Button Click
-closeModalBtn.addEventListener('click', () => {
-    modalOverlay.classList.remove('active');
-});
+// 4. Close Modal Events
+if (closeModalBtn) {
+    closeModalBtn.addEventListener('click', () => {
+        modalOverlay.classList.remove('active');
+    });
+}
 
-// Close Modal on Backdrop Click
 window.addEventListener('click', (e) => {
     if (e.target === modalOverlay) {
         modalOverlay.classList.remove('active');
