@@ -24,14 +24,46 @@ if (hamburgerBtn && navLinks) {
     });
 }
 
-// 3. Form Handling & Modal Trigger
+// 3. Form Handling & Web3Forms API Integration
 if (reservationForm) {
-    reservationForm.addEventListener('submit', (e) => {
+    reservationForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const nameInput = document.getElementById('name').value;
-        modalUserName.textContent = nameInput;
-        modalOverlay.classList.add('active');
-        reservationForm.reset();
+
+        const submitBtn = reservationForm.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.textContent;
+        
+        // Visual UX Feedback: Disable button while waiting for network response
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+
+        const formData = new FormData(reservationForm);
+
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                // Extract name for custom confirmation modal
+                const nameInput = document.getElementById('name').value;
+                modalUserName.textContent = nameInput;
+                
+                // Display success modal and clear inputs
+                modalOverlay.classList.add('active');
+                reservationForm.reset();
+            } else {
+                alert('Submission failed: ' + data.message);
+            }
+        } catch (error) {
+            alert('Network error. Please check your connection and try again.');
+        } finally {
+            // Reset button state regardless of success/failure
+            submitBtn.textContent = originalBtnText;
+            submitBtn.disabled = false;
+        }
     });
 }
 
