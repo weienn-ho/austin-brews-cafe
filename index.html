@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <!-- CRITICAL: Enables proper mobile scaling on real devices -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Mount Austin Cafe</title>
         <link rel="stylesheet" href="style.css">
     </head>
@@ -9,13 +12,23 @@
         <!-- 1. Header & Navigation -->
         <header>
             <h2>Austin Brews</h2>
+
+            <!-- Hamburger Icon Button -->
+             <button class="hamburger" id="hamburger-btn" aria-label="Toggle Navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+             </button>
+
             <nav>
-                <ul>
+                <ul id="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#menu">Menu</a></li>
+                    <li><a href="#about">Our Story</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
+
         </header>
 
         <!-- 2. Main Content Area-->
@@ -50,7 +63,8 @@
                     </div>
                 </div>
             </section>
-            <section class="about">
+
+            <section id="about" class="about">
                 <h2>Our Story</h2>
                 <p>Founded in 2015, Austin Brews has been serving the best craft coffee and fresh pastries in Mount Austin.</p>
             </section>
@@ -60,7 +74,7 @@
                 <h2>Reserve a Table</h2>
                 <p>Planning a visit? Send us a message to secure your spot.</p>
 
-                <form>
+                <form id="reservation-form">
                     <div class="form-group">
                         <label for="name">Full Name</label>
                         <input type="text" id="name" name="name" placeholder="e.g. Alex Tan" required>
@@ -88,5 +102,25 @@
             <p>Location: Mount Austin, Johor Bahru</p>
         </footer>
 
+        <!-- Floating WhatsApp Quick Booking Button -->
+         <a href="https://wa.me/60123456789?text=Hi%20Austin%20Brews,%20I%20would%20like%20to%20check%20table%20availability."
+            class="whatsapp-float"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Chat on Whatsapp">
+            💬 Booking via WhatsApp
+        </a>
+
+        <!-- Modal Overlay (Place right above </body>) -->
+         <div id="modal-overlay" class="modal-overlay">
+            <div class="modal-card">
+                <h3>Reservation Request Sent! 🎉</h3>
+                <p>Thank you, <strong id="modal-user-name">Guest</strong>. We have received your booking request and will confirm via email shortly.</p>
+                <button id="close-modal-btn">Close</button>
+            </div>
+         </div>
+
+         <!-- JavaScript Link (Last element before </body>) -->
+          <script src="script.js"></script>
     </body>
 </html>
