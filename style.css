@@ -194,6 +194,26 @@
         box-shadow: 0 0 0 3px rgba(27, 59, 34, 0.15);
     }
 
+    /* Ensures all text fields, dropdowns, date, and time inputs look identical */
+    .form-group input,
+    .form-group select {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1px solid #444;
+        border-radius: 6px;
+        background-color: #222;
+        color: #ffffff;
+        font-size: 1rem;
+        font-family: inherit;
+        box-sizing: border-box;
+    }
+
+    /* Style options inside dropdown for dark theme */
+    .form-group select option {
+        background-color: #222;
+        color: #ffffff;
+    }
+
     #contact button[type="submit"] {
         width: 100%;
         background-color: #1b3b22;

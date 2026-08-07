@@ -75,22 +75,46 @@
                 <p>Planning a visit? Send us a message to secure your spot.</p>
 
                 <form id="reservation-form">
+                    <!-- 1. Hidden Web3Forms Configuration -->
+                    <input type="hidden" name="access_key" value="fba405f4-b848-441c-b8fc-a3c04818a372">
+                    <input type="hidden" name="subject" value="New Table Reservation - Austin Brews">
+                    <input type="hidden" name="from_name" value="Austin Brews Website">
+
+                    <!-- 2. Contact Fields -->
                     <div class="form-group">
                         <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" placeholder="e.g. Alex Tan" required>
+                        <input type="text" id="name" name="name" required placeholder="Jane Doe">
                     </div>
-                
+
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" placeholder="alex@example.com" required>
+                        <input type="email" id="email" name="email" required placeholder="jane@example.com">
+                    </div>
+
+                    <!-- 3. Reservation Details Fields -->
+                    <div class="form-group">
+                        <label for="guests">Number of Guests</label>
+                        <select id="guests" name="guests" required>
+                            <option value="" disabled selected>Select number of guests</option>
+                            <option value="1 Guest">1 Guest</option>
+                            <option value="2 Guests">2 Guests</option>
+                            <option value="3-4 Guests">3-4 Guests</option>
+                            <option value="5-6 Guests">5-6 Guests</option>
+                            <option value="7+ Guests (Large Party)">7+ Guests (Large Party)</option>
+                        </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="message">Reservation Details</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Date, time, and number of guests..." required></textarea>
+                        <label for="date">Reservation Date</label>
+                        <input type="date" id="date" name="date" required>
                     </div>
 
-                    <button type="submit">Send Reservation Request</button>
+                    <div class="form-group">
+                        <label for="time">Reservation Time</label>
+                        <input type="time" id="time" name="time" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Book Table</button>
                 </form>
              </section>
              
