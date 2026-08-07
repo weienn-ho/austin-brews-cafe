@@ -329,46 +329,38 @@
     MOBILE RESPONSIVE STYLES (Screens 768px and under) (Always kept at bottom)
     =======================================================*/
     @media (max-width: 768px) {
-
-        /* Stack header logo and navigation vertically */
-        header {
-            flex-direction: column;
-            gap: 16px;
-            padding: 20px 4%;
-        }
-
-        /* Shrink the large hero title so it fits on mobile screens */
-        main section:first-of-type h1 {
-            font-size: 1.8rem;
-        }
-
-        /* Adjust padding for small screens */
-        main section:first-of-type {
-            padding: 50px 16px;
-        }
-
-        .hamburger {
-            display: flex; /* Show hamburger icon on mobile */
-        }
-
-        nav ul {
-            display: none; /* Hide default horizontal menu on mobile */
-            flex-direction: column;
-            width: 100%;
-            background-color: #ffffff;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            padding: 20px 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            gap: 16px;
-            z-index: 1000;
-            pointer-events: auto;
-        }
-
-        /* Reveals mobile dropdown when JS toggle .active */
-        nav.ul.active {
-            display: flex;
-        }
+    header {
+        position: relative; /* Provides bounding anchor for absolute menu positioning */
     }
+
+    .hamburger {
+        display: flex;
+        cursor: pointer;
+    }
+
+    /* Base hidden mobile state */
+    nav ul {
+        display: none !important; /* Overrides default desktop flex display */
+        flex-direction: column;
+        width: 100%;
+        background-color: #1a1a1a; /* Dark background so text stands out */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 20px 0;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        gap: 20px;
+        z-index: 9999; /* Forces menu to render ABOVE all hero elements */
+    }
+
+    nav ul li a {
+        color: #ffffff;
+        font-size: 1.1rem;
+    }
+
+    /* Toggled active state triggered by JS */
+    nav ul.active {
+        display: flex !important; /* Forces the drop-down to render on screen */
+    }
+}

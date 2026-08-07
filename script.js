@@ -1,9 +1,6 @@
 // ===========================================================
-// AUSTIN BREWS - DIAGNOSTIC script.js
+// AUSTIN BREWS - PRODUCTION script.js
 // ===========================================================
-
-// TEST 1: Check if the browser is reading this JavaScript file
-alert("DIAGNOSTIC STEP 1: script.js is loaded and running!");
 
 // 1. DOM Element Selection
 const hamburgerBtn = document.getElementById('hamburger-btn');
@@ -13,21 +10,9 @@ const modalOverlay = document.getElementById('modal-overlay');
 const closeModalBtn = document.getElementById('close-modal-btn');
 const modalUserName = document.getElementById('modal-user-name');
 
-// TEST 2: Check if the elements exist in your HTML
-if (!hamburgerBtn) {
-    alert("DIAGNOSTIC ERROR: Cannot find element with id='hamburger-btn' in your HTML!");
-}
-if (!navLinks) {
-    alert("DIAGNOSTIC ERROR: Cannot find element with id='nav-links' in your HTML!");
-}
-
 // 2. Mobile Navigation Toggle
 if (hamburgerBtn && navLinks) {
-    alert("DIAGNOSTIC STEP 2: Elements found successfully!");
-
     hamburgerBtn.addEventListener('click', () => {
-        // TEST 3: Check if the click event is being captured
-        alert("DIAGNOSTIC STEP 3: Hamburger button was clicked!");
         navLinks.classList.toggle('active');
     });
 
